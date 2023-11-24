@@ -1,4 +1,4 @@
-/*create database bdform;*/
+create database bdform;
 use bdform;
 
 CREATE TABLE paciente (
@@ -30,24 +30,6 @@ CREATE TABLE enfermeiro (
     PRIMARY KEY (id)
 );
 
-CREATE TABLE atendimento (
-	id int auto_increment,
-    data_atend date not null,
-    hora time not null,
-    diagnostico varchar(100) not null,
-    tratamento varchar(100) not null,
-    id_paciente INT NOT NULL,
-    id_medico INT NOT NULL,
-    id_enfermeiro INT NOT NULL,
-    CONSTRAINT FK_atendimento_paciente FOREIGN KEY (id_paciente)
-        REFERENCES paciente (numero_identificacao),
-    CONSTRAINT FK_atendimento_medico FOREIGN KEY (id_medico)
-        REFERENCES medico (id),
-    CONSTRAINT FK_atendimento_enfermeiro FOREIGN KEY (id_enfermeiro)
-        REFERENCES enfermeiro (id),
-    PRIMARY KEY (id)
-);
-
 create table agendamento(
 	id int auto_increment,
     data_agenda date not null,
@@ -61,14 +43,3 @@ create table agendamento(
         REFERENCES medico (id),
     primary key(id)
 );
-
-create table ala (
-	id int auto_increment,
-    nome varchar(50) not null,
-    capacidade smallint not null,
-    especializacao varchar(25) not null,
-    primary key (id)
-);
-
-select * from medico;
-
